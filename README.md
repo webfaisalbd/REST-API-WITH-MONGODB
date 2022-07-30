@@ -14,3 +14,12 @@
 ---
 
 
+## Heroku
+// all deploy info 
+- heroku info
+
+// after adding db variable in heroku
+- heroku restart
+
+
+
