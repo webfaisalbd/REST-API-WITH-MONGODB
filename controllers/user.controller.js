@@ -1,6 +1,7 @@
 const User = require("../models/user.model");
 const { v4: uuidv4 } = require("uuid");
 
+// get all users
 const getSAllUsers = async (req, res) => {
     try {
         const users = await User.find();
@@ -10,6 +11,8 @@ const getSAllUsers = async (req, res) => {
     }
 }
 
+
+// get single user
 const getOneUser = async (req, res) => {
     try {
         const user = await User.findOne({ id: req.params.id })
@@ -19,13 +22,15 @@ const getOneUser = async (req, res) => {
     }
 };
 
+
+// create single user
 const createUser = async (req, res) => {
     try {
         const newUser = new User({
             id: uuidv4(),
             name: req.body.name,
             age: Number(req.body.age),
-
+            
         })
         await newUser.save();
         res.status(201).json(newUser);
@@ -34,6 +39,8 @@ const createUser = async (req, res) => {
     }
 }
 
+
+// update single user
 const updateUser = async (req, res) => {
     try {
         const user = await User.findOne({ id: req.params.id })
@@ -46,6 +53,8 @@ const updateUser = async (req, res) => {
     }
 }
 
+
+// delete single user
 const deleteUser = async (req, res) => {
     try {
         await User.deleteOne({ id: req.params.id })
